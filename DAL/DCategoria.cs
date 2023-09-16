@@ -8,13 +8,14 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    class DCategoria
+    public class DCategoria
     {
         private int _Idcategoria;
         private string _Nome;
         private string _Descricao;
         private string _TextoBuscar;
 
+        //Propriedades
         public int Idcategoria { get => _Idcategoria; set => _Idcategoria = value; }
         public string Nome { get => _Nome; set => _Nome = value; }
         public string Descricao { get => _Descricao; set => _Descricao = value; }
@@ -25,7 +26,7 @@ namespace DAL
         {
         }
 
-        //Construtor com Parâmetros
+        //Construtor com Parâmetros (o que está dentro de parenteses são os parâmetros)
         public DCategoria(int idcategoria, string nome, string descricao, string textobuscar)
         {
             this.Idcategoria = idcategoria;
@@ -85,6 +86,7 @@ namespace DAL
                 if (SqlCon.State == ConnectionState.Open)
                     SqlCon.Close();
             }
+            return resp;
         }
 
         //Método Editar
@@ -138,6 +140,7 @@ namespace DAL
                 if (SqlCon.State == ConnectionState.Open)
                     SqlCon.Close();
             }
+            return resp;
         }
 
         //Método Excluir
@@ -177,10 +180,11 @@ namespace DAL
                 if (SqlCon.State == ConnectionState.Open)
                     SqlCon.Close();
             }
+            return resp;
         }
 
         //Método Mostrar
-        public DataTable Mostrar(DCategoria Categoria)
+        public DataTable Mostrar()
         {
             DataTable DtResultado = new DataTable("categoria");
             SqlConnection SqlCon = new SqlConnection();
@@ -198,6 +202,7 @@ namespace DAL
             {
                 DtResultado = null;
             }
+            return DtResultado;
         }
 
         //Método Buscar Nome
@@ -226,6 +231,7 @@ namespace DAL
             {
                 DtResultado = null;
             }
+            return DtResultado;
         }
     }
 }
